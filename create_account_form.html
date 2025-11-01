@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Create Account</title>
+        <script>
+            function validatePasswords() {
+                var p = document.getElementById('password').value;
+                var cp = document.getElementById('confirm_password').value;
+                if (p !== cp) {
+                    alert('Passwords do not match.');
+                    document.getElementById('confirm_password').focus();
+                    return false;
+                }
+                return true;
+            }
+            document.addEventListener('DOMContentLoaded', function () {
+                var form = document.querySelector('form');
+                if (form) {
+                    form.addEventListener('submit', function (e) {
+                        if (!validatePasswords()) {
+                            e.preventDefault();
+                        }
+                    });
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <form method="post" action="create_account.php" onsubmit="return validatePasswords();">
+        <table>
+            <tr>
+                <td colspan="2"><h2>Create Account</h2></td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" id="first_name" name="first_name" required> </td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text" id="last_name" name="last_name" required> </td>
+            </tr>
+
+            <tr>
+                <td>Sex</td>
+                <td>
+                    <select id="sex" name="sex" required>
+                        <option value=""></option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Address</td>
+                <td>
+                    <textarea id="address" name="address" cols="25" rows="5" required></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Email</td>
+                <td><input type="email" id="email" name="email" required> </td>
+            </tr>
+
+            <tr>
+                <td>Contact Number</td>
+                <td><input type="text" id="contact_no" name="contact_no" inputmode="numeric" pattern="[0-9]*" maxlength="11" required oninput="this.value = this.value.replace(/\D/g, '')"></td>
+            </tr>
+
+            <tr>
+                <td>Username</td>
+                <td><input type="text" id="username" name="username" required> </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" id="password" name="password" required> </td>
+            </tr>
+            <tr>
+                <td>Confirm Password</td>
+                <td><input type="password" id="confirm_password" name="confirm_password" required> </td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Create Account"> </td>
+            </tr>
+        </table>
+        </form>
+        
+    </body>
+</html>
